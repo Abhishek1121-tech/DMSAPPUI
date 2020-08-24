@@ -11,7 +11,7 @@
         <div>
             <form>
                 <fieldset>
-                    <legend class="text-center">Valid information is required to initiate Payment. <span class="req"><small>
+                    <legend class="text-center">Valid information is required to initiate Expense. <span class="req"><small>
                                 required *</small></span></legend>
 
                                 <div class="form-group">
@@ -19,13 +19,13 @@
                                     <div class="basic-container">
                                        
                                         <mat-form-field >
-                                                     <mat-select [formControl]="customerCtrl"  (selectionChange)="onChangeValue($event)" placeholder="Customer Mobile Number" #singleSelect>
+                                                     <mat-select [formControl]="expenseCtrl" (selectionChange)="onChangeValue($event)"  placeholder="Customer Mobile Number" #singleSelect>
                                                        <mat-option>
-                                                         <ngx-mat-select-search [formControl]="customerFilterCtrl"  ></ngx-mat-select-search>
+                                                         <ngx-mat-select-search [formControl]="expenseFilterCtrl"  ></ngx-mat-select-search>
                                                        </mat-option>
                                                  
-                                                       <mat-option *ngFor="let customerMobileWrapper of filteredCustomers | async"   [value]="customerMobileWrapper">
-                                                         {{customerMobileWrapper.mobile}}
+                                                       <mat-option *ngFor="let expenseMobileWrapper of filteredExpenses | async"   [value]="expenseMobileWrapper">
+                                                         {{expenseMobileWrapper.name}}
                                                        </mat-option>
                                                      </mat-select>
                                                    </mat-form-field>
@@ -33,21 +33,15 @@
                                     
                                           </div>
                                 </div>
-                                <div class="form-group">
-
-                                    <label for="CustomerName"><span class="req">* </span> Selected Customer: </label>
-                                    <input class="form-control" type="text" [(ngModel)]="customer.name" value="{{customerCtrl.value?.name}}"   name="customernumber" id="txt"
-                                    placeholder="Customer Name" required  />
-                    </div> 
                     <div class="form-group">
-                        <label for="Payment Amopunt"><span class="req">* </span> Payment Amount: </label>
-                        <input class="form-control" type="number" [(ngModel)]="payment.paymentAmount" name="PaymentAmount" id="PaymentAmount"
-                             maxlength="28" placeholder="Payment Amount..." required />
+                        <label for="Expense Amopunt"><span class="req">* </span> Expense Amount: </label>
+                        <input class="form-control" type="number" [(ngModel)]="expense.expenseAmount" name="ExpenseAmount" id="ExpenseAmount"
+                             maxlength="28" placeholder="Expense Amount..." required />
                     </div>
 
                     <div class="form-group">
                         <label for="remarks"><span class="req">* </span> Remarks: </label>
-                        <input class="form-control" type="text" [(ngModel)]="payment.descriptionRemarks" name="remarks" id="remarks" 
+                        <input class="form-control" type="text" [(ngModel)]="expense.descriptionRemarks" name="remarks" id="remarks" 
                             placeholder="Remarks" required />
                         <div id="errFirst"></div>
                     </div>
@@ -56,7 +50,7 @@
                     
                           
                       <div class="form-group">
-                        <input class="btn btn-success" type="submit" name="submit_reg" value="Initiate" (click)="makePayment()">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="ADD IN EXPENSE" (click)="makeExpense()">
                     </div>
                 </fieldset>
             </form><!-- ends register form -->

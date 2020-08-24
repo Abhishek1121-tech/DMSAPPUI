@@ -18,6 +18,8 @@ import { BillingCreationComponent } from './billing-creation/billing-creation.co
 import { BillingCreationSvcService } from './billing-creation-svc.service';
 import { PaymentCreationComponent } from './payment-creation/payment-creation.component';
 import { PaymentCreationSvcService } from './payment-creation-svc.service';
+import { ExpenseCreationComponent } from './expense-creation/expense-creation.component';
+import { ExpenseCreationSvcService } from './expense-creation-svc.service';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { PaymentCreationSvcService } from './payment-creation-svc.service';
     CustomerRegistrationComponent,
     BillingCreationComponent,
     PaymentCreationComponent,
+    ExpenseCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { PaymentCreationSvcService } from './payment-creation-svc.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [SalesmanRegistrationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService],
+  providers: [SalesmanRegistrationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService,ExpenseCreationSvcService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { SalesmanRegistrationComponent } from './salesman-registration/salesman-
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { BillingCreationComponent } from './billing-creation/billing-creation.component';
 import { PaymentCreationComponent } from './payment-creation/payment-creation.component';
+import { ExpenseCreationComponent } from './expense-creation/expense-creation.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:"customerregister",component:CustomerRegistrationComponent},
   {path:"customerbillCreation",component:BillingCreationComponent},
   {path:"customerpaymentCreation",component:PaymentCreationComponent},
+  {path:"expenseCreation",component:ExpenseCreationComponent},
 
 ];
 
