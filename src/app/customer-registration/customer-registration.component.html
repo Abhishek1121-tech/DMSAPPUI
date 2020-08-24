@@ -1,0 +1,81 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div style="text-align: center">
+    <h1>{{message}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div>
+            <form>
+                <fieldset>
+                    <legend class="text-center">Valid information is required to register. <span class="req"><small>
+                                required *</small></span></legend>
+
+                    <div class="form-group">
+                        <label for="Name"><span class="req">* </span> Name: <small>This will be your login customer
+                                name</small> </label>
+                        <input required type="text" [(ngModel)]="customer.name" name="name" id="name"
+                            class="form-control phone" maxlength="28" placeholder="Enter your fullname..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile"><span class="req">* </span> Mobile: </label>
+                        <input class="form-control" type="number" [(ngModel)]="customer.mobile" name="mobile" id="txt" required
+                            placeholder="Enter valid mobile number" />
+                        <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Area"><span class="req">* </span> Area : </label>
+                        <input class="form-control" type="text" [(ngModel)]="customer.custArea" name="target" id="txt"
+                            placeholder="Area" required />
+                        <div id="errLast"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Credit"><span class="req">* </span> Credit Limit : </label>
+                        <input class="form-control" type="number" [(ngModel)]="customer.creditLimit" name="target" id="txt"
+                            placeholder="Credit Limit" required />
+                        <div id="errLast"></div>
+                    </div>
+                    <div class="form-group">
+                    <label for="Salesman MobileNumber"><span class="req">* </span> Select N Search Mobile : </label>
+                    <div class="basic-container">
+                       
+                        <mat-form-field >
+                                     <mat-select [formControl]="salesmanCtrl" (click)="onClick()"  (selectionChange)="onChangeValue($event)" placeholder="SalesMan Mobile Number" #singleSelect>
+                                       <mat-option>
+                                         <ngx-mat-select-search [formControl]="salesmanFilterCtrl"  ></ngx-mat-select-search>
+                                       </mat-option>
+                                 
+                                       <mat-option *ngFor="let salesManMobileWrapper of filteredSalesmans | async"   [value]="salesManMobileWrapper">
+                                         {{salesManMobileWrapper.mobile}}
+                                       </mat-option>
+                                     </mat-select>
+                                   </mat-form-field>
+                                
+                    
+                          </div>
+                </div>
+                    
+                          <div class="form-group">
+
+                            <label for="SalesmanName"><span class="req">* </span> Selected Salesman: </label>
+                            <input class="form-control" type="text" [(ngModel)]="salesman.name" value="{{salesmanCtrl.value?.name}}"   name="salesmannumber" id="txt"
+                            placeholder="Salesman Name" required  />
+            </div> 
+                      <div class="form-group">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="registerNow()">
+                    </div>
+                </fieldset>
+            </form><!-- ends register form -->
+            <!-- second for to fiter customer-->
+
+         
+        </div><!-- ends col-6 -->
+
+    </div>
+</div>
