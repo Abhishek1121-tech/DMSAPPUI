@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CustomerRegistrationSvcService } from '../customer-registration-svc.service';
 import { Customer } from '../customer';
-import { SalesManMobileWrapper,SalesManMobileWrapper_INIT } from '../SalesManMobile';
+import { MobileWrapper_INIT } from '../wrapperMobile';
+import { MobileWrapper } from "../wrapperMobile";
 import { FormControl } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
 import { MatSelect } from '@angular/material/select';
@@ -33,13 +34,13 @@ export class CustomerRegistrationComponent implements OnInit, AfterViewInit, OnD
    public salesmanFilterCtrl: FormControl = new FormControl();
  
    /** list of banks filtered by search keyword */
-   public filteredSalesmans: ReplaySubject<SalesManMobileWrapper[]> = new ReplaySubject<SalesManMobileWrapper[]>(1);
+   public filteredSalesmans: ReplaySubject<MobileWrapper[]> = new ReplaySubject<MobileWrapper[]>(1);
  
    @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
  
    /** Subject that emits when the component has been destroyed. */
    protected _onDestroy = new Subject<void>();
-  mobileNumberList: SalesManMobileWrapper[]=SalesManMobileWrapper_INIT;
+  mobileNumberList: MobileWrapper[]=MobileWrapper_INIT;
   
   
   constructor(private customerService:CustomerRegistrationSvcService) { }
@@ -61,7 +62,7 @@ export class CustomerRegistrationComponent implements OnInit, AfterViewInit, OnD
      this.salesmanFilterCtrl.valueChanges
        .pipe(takeUntil(this._onDestroy))
        .subscribe(() => {
-         this.filterBanks();
+         this.filterMobiles();
        });
   }
 
@@ -91,7 +92,7 @@ export class CustomerRegistrationComponent implements OnInit, AfterViewInit, OnD
       });
   }
 
-  protected filterBanks() {
+  protected filterMobiles() {
    
     if (!this.mobileNumberList) {
       return;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {httpOptions} from './headers'
-import { SalesManMobileWrapper } from './SalesManMobile';
+
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'

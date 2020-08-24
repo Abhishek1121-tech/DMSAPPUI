@@ -13,14 +13,20 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { CustomerRegistrationSvcService } from './customer-registration-svc.service';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
+import { BillingCreationComponent } from './billing-creation/billing-creation.component'
+import { BillingCreationSvcService } from './billing-creation-svc.service';
+import { PaymentCreationComponent } from './payment-creation/payment-creation.component';
+import { PaymentCreationSvcService } from './payment-creation-svc.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SalesmanRegistrationComponent,
-    CustomerRegistrationComponent
+    CustomerRegistrationComponent,
+    BillingCreationComponent,
+    PaymentCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ import {MatSelectModule} from '@angular/material/select'
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [SalesmanRegistrationSvcService,CustomerRegistrationSvcService],
+  providers: [SalesmanRegistrationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
