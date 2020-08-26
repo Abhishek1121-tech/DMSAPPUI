@@ -17,7 +17,7 @@ import { takeUntil, take } from 'rxjs/operators';
 })
 export class PaymentCreationComponent implements OnInit {
 
-  payment: Payment=new Payment(0,"");
+  payment: Billing=new Billing(0,"");
   message:any;
   customer: Customer= new Customer("",0,"",0);
   public customerCtrl: FormControl = new FormControl();
@@ -108,7 +108,7 @@ export class PaymentCreationComponent implements OnInit {
     console.log("mobile"+this.customer.mobile)
     let response_url=this.paymentService.doPaymentCreation(this.payment,this.customer.mobile);
     response_url.subscribe((data)=>this.message=data);
-    this.payment.paymentAmount=null;
+    this.payment.billAmount=null;
     this.payment.descriptionRemarks=null;
   }
   onChangeValue(customerMobile){
