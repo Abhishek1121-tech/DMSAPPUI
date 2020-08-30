@@ -20,7 +20,15 @@ import { PaymentCreationComponent } from './payment-creation/payment-creation.co
 import { PaymentCreationSvcService } from './payment-creation-svc.service';
 import { ExpenseCreationComponent } from './expense-creation/expense-creation.component';
 import { ExpenseCreationSvcService } from './expense-creation-svc.service';
-
+import { ReportCreationRequestFormComponent } from './report-creation-request-form/report-creation-request-form.component';
+import { ReportCreationRequestFormSvcService } from './report-creation-request-form-svc.service';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatInputModule } from '@angular/material/input';
+import { ReportListViewPagginationComponent } from './report-list-view-paggination/report-list-view-paggination.component'; 
+import { ReportListViewPagginationSvcService } from './report-list-view-paggination-svc.service';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -30,6 +38,8 @@ import { ExpenseCreationSvcService } from './expense-creation-svc.service';
     BillingCreationComponent,
     PaymentCreationComponent,
     ExpenseCreationComponent,
+    ReportCreationRequestFormComponent,
+    ReportListViewPagginationComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,8 +50,13 @@ import { ExpenseCreationSvcService } from './expense-creation-svc.service';
     MatSelectModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    AgGridModule.withComponents([])
   ],
-  providers: [SalesmanRegistrationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService,ExpenseCreationSvcService],
+  providers: [SalesmanRegistrationSvcService,ReportListViewPagginationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService,ExpenseCreationSvcService,ReportCreationRequestFormSvcService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
