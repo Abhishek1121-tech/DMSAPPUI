@@ -43,10 +43,9 @@ export class ReportCreationRequestFormComponent implements OnInit  {
     response_url.subscribe(data=>this.message=data);
     this.form.controls.reportTypeCtrl.setValue(1);
     this.form.controls.selectionTypeCtrl.setValue(1);
-    this.form.controls.reportDateRange=this.formBuilder.group({
-      startDate: '',
-      endDate: ''
-    });
+    this.reportEntryModel.reportSelectionType=null;
+    this.form.controls.reportDateRange.value.startDate='';
+    this.form.controls.reportDateRange.value.endDate='';
   }
   
   changereportTypeCtrl(event){
@@ -64,6 +63,7 @@ export class ReportCreationRequestFormComponent implements OnInit  {
     const currentYear = new Date().getFullYear();
   this.minDate = new Date(currentYear - 1, 0, 1);
   this.maxDate = new Date(currentYear + 1, 11, 31);
+  
     
   }
 
