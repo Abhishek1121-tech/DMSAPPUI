@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { httpOptions } from './headers';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ReportListViewPagginationSvcService {
   downloadReport(reportDownloadURL: any) {
     let httpheaders = httpOptions;
         
-    return this.http.get(`http://localhost:8080/downloadReport?filename=${reportDownloadURL}`, {headers: httpheaders.headers,observe: 'response',
+    return this.http.get(`${environment.apiUrl}downloadReport?filename=${reportDownloadURL}`, {headers: httpheaders.headers,observe: 'response',
     responseType: 'arraybuffer'});
   }
 
@@ -21,7 +22,7 @@ export class ReportListViewPagginationSvcService {
 
      let page_size=params.endRow-params.startRow;
         
-    return this.http.get(`http://localhost:8080/findAllReportByPaginationSort?pageNo=${pageNo}&pageSize=${page_size}`,  httpheaders );
+    return this.http.get(`${environment.apiUrl}findAllReportByPaginationSort?pageNo=${pageNo}&pageSize=${page_size}`,  httpheaders );
   }
 
 
@@ -29,6 +30,6 @@ export class ReportListViewPagginationSvcService {
   {
      let httpheaders = httpOptions;
         
-    return this.http.get(`http://localhost:8080/findAllReports`,  httpheaders );
+    return this.http.get(`${environment.apiUrl}findAllReports`,  httpheaders );
   }
 }

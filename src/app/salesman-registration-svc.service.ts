@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from 'src/environments/environment.prod';
 @Injectable()
 export class SalesmanRegistrationSvcService {
 
@@ -8,7 +8,7 @@ export class SalesmanRegistrationSvcService {
 
   public doRegistrationSalesman(salesman)
   {
-      return this.http.post("http://localhost:8080/saveSalesman",salesman,{responseType: 'text' as 'json'});
+      return this.http.post(`${environment.apiUrl}saveSalesman`,salesman,{responseType: 'text' as 'json'});
   }
 
 }
