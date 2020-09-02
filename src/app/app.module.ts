@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReportListViewPagginationComponent } from './report-list-view-paggination/report-list-view-paggination.component'; 
 import { ReportListViewPagginationSvcService } from './report-list-view-paggination-svc.service';
 import { AgGridModule } from 'ag-grid-angular';
+import { ButtonRendererComponent } from './renderer/ButtonRendererComponent';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AgGridModule } from 'ag-grid-angular';
     ExpenseCreationComponent,
     ReportCreationRequestFormComponent,
     ReportListViewPagginationComponent,
+    ButtonRendererComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { AgGridModule } from 'ag-grid-angular';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([ButtonRendererComponent])
   ],
   providers: [SalesmanRegistrationSvcService,ReportListViewPagginationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService,ExpenseCreationSvcService,ReportCreationRequestFormSvcService],
   bootstrap: [AppComponent]

@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 
 import { GridOptions, IDatasource, IGetRowsParams } from 'ag-grid-community';
+import { ButtonRendererComponent } from '../renderer/ButtonRendererComponent';
+
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-report-list-view-paggination',
   templateUrl: './report-list-view-paggination.component.html',
@@ -20,25 +23,16 @@ export class ReportListViewPagginationComponent implements OnInit {
   public cacheOverflowSize;
   public maxConcurrentDatasourceRequests;
   public infiniteInitialRowCount;
-  userSubscriber: Subscription;
 
   rowData: any=[];
   countRows:any;
+  frameworkComponents: any;
+  rowDataClicked1: any;
 
   constructor(public serviceReportListViewSvc:ReportListViewPagginationSvcService) { 
 
-    this.columnDefs = [
-      { headerName: 'Report ID', field: 'id' },
-      { headerName: 'Report Name', field: 'reportName',resizable: true},
-      { headerName: 'Report Type', field: 'reportType'},
-      { headerName: 'Selection Type', field: 'reportSelectionType' },
-      { headerName: 'Failed Reason', field: 'gender' ,resizable: true},
-      { headerName: 'Report Status', field: 'reportStatus' },
-      { headerName: 'Download URL', field: 'reportDownloadURL',resizable: true },
-      { headerName: 'Report Creation Date', field: 'reportCreationDate',resizable: true,cellRenderer: (data) => {
-        return data.value ? ((new Date(data.value)).toLocaleDateString()+" "+(new Date(data.value)).toLocaleTimeString()) : '';
-   } },
-    ];
+  
+   
 
     var tooltipRenderer = function(params)
 {
@@ -93,12 +87,42 @@ export class ReportListViewPagginationComponent implements OnInit {
 
   
   ngOnInit() {
-
     this.serviceReportListViewSvc.getCountReports().subscribe(data => { 
-      console.log(data);this.countRows=data});
-
-
-      
+      console.log(data);this.countRows=data});     
+      this.columnDefs = [
+        { headerName: 'Report ID', field: 'id'},
+        { headerName: 'Report Name', field: 'reportName',resizable: true},
+        { headerName: 'Report Type', field: 'reportType'},
+        { headerName: 'Selection Type', field: 'reportSelectionType' },
+        { headerName: 'Failed Reason', field: 'gender' ,resizable: true},
+        { headerName: 'Report Status', field: 'reportStatus' },
+        { headerName: 'Download URL', cellRenderer: 'buttonRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick1.bind(this),
+          label: 'Download Report'
+        } },
+        { headerName: 'Report Creation Date', field: 'reportCreationDate', sresizable: true,cellRenderer: (data) => {
+          return data.value ? ((new Date(data.value)).toLocaleDateString()+" "+(new Date(data.value)).toLocaleTimeString()) : '';
+     } },
+      ];
+      this.frameworkComponents = {
+        buttonRenderer: ButtonRendererComponent,
+      }
+  
+  }
+  onBtnClick1(e) {
+    console.log("here",e.rowData.reportDownloadURL);
+    const getFilename_pieces=e.rowData.reportDownloadURL.split(/[\s/]+/);
+    //console.log("pieces",getFilename_pieces)
+    let response_url=this.serviceReportListViewSvc.downloadReport(e.rowData.reportDownloadURL);
+    response_url.subscribe(response => this.downLoadFile(response,getFilename_pieces[getFilename_pieces.length-1]));
   }
 
+  
+  public downLoadFile(response: any, fileName?: string) {
+    const blob = new Blob([response.body], { type: response.headers.get('content-type') });
+    fileName = fileName || response.headers.get('content-disposition').split(';')[0];
+    const file = new File([blob], fileName, { type: response.headers.get('content-type') });
+    saveAs(file);
+}
 }

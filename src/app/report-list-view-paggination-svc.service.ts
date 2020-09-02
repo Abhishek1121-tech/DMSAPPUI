@@ -6,6 +6,12 @@ import { httpOptions } from './headers';
   providedIn: 'root'
 })
 export class ReportListViewPagginationSvcService {
+  downloadReport(reportDownloadURL: any) {
+    let httpheaders = httpOptions;
+        
+    return this.http.get(`http://localhost:8080/downloadReport?filename=${reportDownloadURL}`, {headers: httpheaders.headers,observe: 'response',
+    responseType: 'arraybuffer'});
+  }
 
   constructor(private http:HttpClient) { }
 

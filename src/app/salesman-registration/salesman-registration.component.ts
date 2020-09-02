@@ -14,6 +14,7 @@ export class SalesmanRegistrationComponent implements OnInit {
   constructor(private salesmanservice:SalesmanRegistrationSvcService) { }
 
   ngOnInit() {
+    
   }
 
   public  registerNow(){

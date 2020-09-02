@@ -5,3 +5,11 @@ export const httpOptions = {
     'Content-Type':  'application/json'
   })
 };
+
+export const httpDownloadOptions = {
+  
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  }),
+  responseType: 'arraybuffer'
+};
