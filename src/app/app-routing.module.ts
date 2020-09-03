@@ -7,10 +7,12 @@ import { PaymentCreationComponent } from './payment-creation/payment-creation.co
 import { ExpenseCreationComponent } from './expense-creation/expense-creation.component';
 import { ReportCreationRequestFormComponent } from './report-creation-request-form/report-creation-request-form.component';
 import { ReportListViewPagginationComponent } from './report-list-view-paggination/report-list-view-paggination.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  {path:"",redirectTo:"salesmanregister",pathMatch:"full"},
+  {path:"",redirectTo:"home",pathMatch:"full"},
+  {path:"home",component:HomeComponent},
   {path:"salesmanregister",component:SalesmanRegistrationComponent},
   {path:"customerregister",component:CustomerRegistrationComponent},
   {path:"customerbillCreation",component:BillingCreationComponent},
@@ -22,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -30,6 +30,8 @@ import { ReportListViewPagginationComponent } from './report-list-view-pagginati
 import { ReportListViewPagginationSvcService } from './report-list-view-paggination-svc.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { ButtonRendererComponent } from './renderer/ButtonRendererComponent';
+import { CoreModule } from './core/core.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ButtonRendererComponent } from './renderer/ButtonRendererComponent';
     ReportCreationRequestFormComponent,
     ReportListViewPagginationComponent,
     ButtonRendererComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { ButtonRendererComponent } from './renderer/ButtonRendererComponent';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    AgGridModule.withComponents([ButtonRendererComponent])
+    AgGridModule.withComponents([ButtonRendererComponent]),
+    CoreModule
   ],
   providers: [SalesmanRegistrationSvcService,ReportListViewPagginationSvcService,CustomerRegistrationSvcService,BillingCreationSvcService,PaymentCreationSvcService,ExpenseCreationSvcService,ReportCreationRequestFormSvcService],
   bootstrap: [AppComponent]

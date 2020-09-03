@@ -7,6 +7,7 @@ import { GridOptions, IDatasource, IGetRowsParams } from 'ag-grid-community';
 import { ButtonRendererComponent } from '../renderer/ButtonRendererComponent';
 
 import { saveAs } from 'file-saver';
+import { NavigationEnd, Router } from '@angular/router';
 @Component({
   selector: 'app-report-list-view-paggination',
   templateUrl: './report-list-view-paggination.component.html',
@@ -29,8 +30,13 @@ export class ReportListViewPagginationComponent implements OnInit {
   frameworkComponents: any;
   rowDataClicked1: any;
 
-  constructor(public serviceReportListViewSvc:ReportListViewPagginationSvcService) { 
 
+
+
+
+  constructor(public serviceReportListViewSvc:ReportListViewPagginationSvcService,private router: Router) { 
+
+   
   
    
 
@@ -54,6 +60,9 @@ export class ReportListViewPagginationComponent implements OnInit {
   }
 
 
+  refresh() {
+    this.router.navigate(['same-route-here']);
+    this.ngOnInit();   }
 
   onGridReady(params) {
     console.log('On Grid Ready');

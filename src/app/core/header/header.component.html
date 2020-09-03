@@ -1,0 +1,33 @@
+
+<div class="navbar navbar-inverse navbar-static-top">
+  
+      <a href="" class="navbar-brand">Home</a>
+
+
+        <div class="dropdown">
+            <button class="dropbtn">ADMIN</button>
+            <div class="dropdown-content">
+              <a [routerLink]="['/salesmanregister']">Add Salesman</a>
+              <a [routerLink]="['/customerregister']">Add Customer</a>
+            </div>
+          </div> 
+
+          <div class="dropdown">
+            <button class="dropbtn">TRANSACTION</button>
+            <div class="dropdown-content">
+              <a [routerLink]="['/customerpaymentCreation']">Payment</a>
+              <a [routerLink]="['/customerbillCreation']">Billing</a>
+              <a [routerLink]="['/expenseCreation']">Expenses</a>
+            </div>
+          </div> 
+
+          <div class="dropdown" >
+            <button class="dropbtn">REPORT</button>
+            <div class="dropdown-content">
+              <a [routerLink]="['/reportGenerationRequest']">Report Request</a>
+              <a [routerLink]="['/reportStatusListPage']">Report List</a>
+            </div>
+          </div>
+     
+     
+    </div>
