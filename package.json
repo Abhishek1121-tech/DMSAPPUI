@@ -23,7 +23,7 @@
     "@angular/router": "~9.1.1",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "ag-grid-angular": "^23.2.1",
-    "ag-grid-community": "^23.2.1",
+    "ag-grid-community": "^25.2.0",
     "bootstrap": "^4.5.2",
     "file-saver": "^2.0.2",
     "ngx-bootstrap": "^5.6.1",
